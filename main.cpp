@@ -2563,7 +2563,8 @@ uint32_t guess_flash_size(memory_access &access) {
 
     // Read at decreasing power-of-two addresses until we don't see the boot pages again
     const int min_size = 16 * PAGE_SIZE;
-    const int max_size = 8 * 1024 * 1024;
+//const int max_size = 8 * 1024 * 1024;
+const int max_size = 16 * 1024 * 1024;
     int size;
     for (size = max_size; size >= min_size; size >>= 1) {
         auto new_pages = access.read_vector<uint8_t>(FLASH_START + size, 2 * PAGE_SIZE);
